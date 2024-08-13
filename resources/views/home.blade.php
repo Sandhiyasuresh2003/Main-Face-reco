@@ -11,7 +11,7 @@
   </label>
   <div class="sidebar">
     <div class="logo">
-      <a href="#">Sidebar Menu</a>
+      <a href="#">V.V.V College</a>
       <label for="open-sidebar" class="times">
         <i class="fas fa-times"></i>
       </label>
@@ -19,23 +19,38 @@
     <div class="nav">
       <ul>
         <li class="nav-list">
+          <a href="{{ route('profile') }}">
+            <i class="fas fa-user nav-link-icon"></i>
+            Profile
+          </a>
+        </li>
+        @if ($user->hasRole('student'))
+        <li class="nav-list">
+          <a href="{{ route('stud.attendance') }}">
+            <i class="fas fa-camera nav-link-icon"></i>
+            Face Capture
+          </a>
+        </li>
+        <li class="nav-list">
+          <a href="{{ route('attendance.history') }}">
+            <i class="fas fa-calendar-check nav-link-icon"></i>
+            Attendance History
+          </a>
+        </li>
+        @endif
+        <li class="nav-list">
           <a href="#">
-            <i class="fas fa-home nav-link-icon"></i>
-            Home
+            <i class="fas fa-cogs nav-link-icon"></i>
+            Settings
           </a>
         </li>
         <li class="nav-list">
-          <a href="{{ route('stud.profile') }}">
-            <i class="fas fa-sliders-h nav-link-icon"></i>
-            profile
+          <a href="#">
+            <i class="fas fa-bell nav-link-icon"></i>
+            Notifications
           </a>
         </li>
-        <li class="nav-list">
-          <a href="{{ route('stud.attendance')}}">
-            <i class="fas fa-comments nav-link-icon"></i>
-            Mark Attendance
-          </a>
-        </li>
+        
         <li class="nav-list">
           <a href="{{ route('admin.profile')}}">
             <i class="fas fa-comments nav-link-icon"></i>

@@ -32,7 +32,7 @@ class AuthController extends Controller
         return back()->withErrors(['username' => 'Invalid credentials.']);
     }
 
-    public function register(Request $request) {
+    public function student_register(Request $request) {
         $validated = $request->validate([
             'name' => ['required','string','max:100'],
             'email' => 'required|email|unique:users',
@@ -48,6 +48,7 @@ class AuthController extends Controller
         }
 
         $user = $this->create($validated);
+        $user->assignRole('student');
         Auth::login($user);
 
         return redirect()->route('home')->with('success', 'You have signed-in');
