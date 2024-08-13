@@ -13,10 +13,10 @@ class HomeController extends Controller
             return view('home', compact('user'));
         }
     }
-    public function show_student_profile(){
+    public function user_profile(){
         if (Auth::check()) {  
             $user = Auth::user();
-            return view('student_dashboard', compact('user'));
+            return view('profile', compact('user'));
         }
     }
 }

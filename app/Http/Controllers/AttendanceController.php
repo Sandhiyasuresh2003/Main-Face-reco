@@ -12,10 +12,22 @@ use Illuminate\Support\Facades\Validator;
 
 class AttendanceController extends Controller
 {
-    public function show_attendance(){
+    public function show_face_capture_form(){
         if(Auth::check()){
             $user = Auth::user();
-            return view('attendance',compact('user'));
+            return view('face_capture',compact('user'));
+        }
+    }
+    public function show_attendance_history()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $attendanceRecords = Attendance::where('student_id', $user->reg_no)
+                                            ->orderBy('date_of_attendance', 'desc')
+                                            ->get();
+            return view('attendance_history', compact('user', 'attendanceRecords'));
+        } else {
+            return redirect()->route('login');
         }
     }
 }

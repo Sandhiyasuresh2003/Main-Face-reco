@@ -17,7 +17,7 @@
     <!-- Form -->
     <div id="form-container">
         <h1 class="title">Sign up</h1>
-        <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('stud.register') }}" enctype="multipart/form-data">
             @csrf
             <div class="label">Name</div>
             <input type="text" name="name" required />
