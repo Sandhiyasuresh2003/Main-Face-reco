@@ -54,14 +54,26 @@
     @csrf
     <input type="file" name="captured_image" id="captured_image_input" style="display:none;">
     <button type="submit">Submit Image</button>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 </form>
 
-<!-- Display Validation Errors -->
 @if ($errors->has('captured_image'))
     <div class="alert alert-danger">
         {{ $errors->first('captured_image') }}
     </div>
 @endif
+
+
 
 <script>
     // Access the user's webcam
